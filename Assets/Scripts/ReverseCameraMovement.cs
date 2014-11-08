@@ -13,7 +13,7 @@ public class ReverseCameraMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Translate(Vector3.forward * Time.deltaTime * -speed, Space.World);
-		if (transform.position.z < 0) {
+		if (transform.position.z < -5) {
 			Destroy(gameObject);
 		}
 	}

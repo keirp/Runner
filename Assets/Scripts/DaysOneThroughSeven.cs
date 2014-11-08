@@ -23,7 +23,7 @@ public class DaysOneThroughSeven : MonoBehaviour {
 		}
 		if (Time.time - lastMarker > markerSpawnInt) {
 			lastMarker = Time.time;
-			Instantiate(marker, transform.position, Quaternion.identity);
+			//Instantiate(marker, new Vector3(.78f, ), Quaternion.identity);
 		}
 	}
 
