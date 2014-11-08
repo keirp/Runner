@@ -64,6 +64,8 @@ public class CharacterScript : MonoBehaviour {
 			Debug.Log("you are touching the ground");
 			isJump = false;
 			RenderSettings.ambientLight = Color.gray;
+		} else if (other.tag == "abyss") {
+			gameObject.layer = 8;
 		}
 	}
 }
