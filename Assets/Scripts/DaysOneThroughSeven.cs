@@ -26,7 +26,7 @@ public class DaysOneThroughSeven : MonoBehaviour {
 					Instantiate(hurdle, new Vector3(.52f, 1.21f, transform.position.z), Quaternion.identity);
 					break;
 				case 1:
-					Instantiate(abyss, new Vector3(0f, 1.229f, transform.position.z), Quaternion.identity);
+				Instantiate(abyss, new Vector3(-7.643703f, 1.229f, transform.position.z), Quaternion.identity);
 					break;
 			}
 

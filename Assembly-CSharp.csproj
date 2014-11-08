@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\CharacterScript.cs" />
      <Compile Include="Assets\Scripts\DaysOneThroughSeven.cs" />
      <Compile Include="Assets\Scripts\ReverseCameraMovement.cs" />
+     <Compile Include="Assets\Scripts\VariableAbyss.cs" />
      <None Include="Assets\Shaders\Subtractive.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
