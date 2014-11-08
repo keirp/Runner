@@ -1,18 +1,25 @@
 fileFormatVersion: 2
-guid: 1cd88a59e60497947bebbdd0a7d97190
+guid: e89ad10053b131f408e7d5941ad4215c
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: CONE_BASE
-    100002: //RootNode
-    400000: CONE_BASE
-    400002: //RootNode
-    2300000: CONE_BASE
-    2300002: //RootNode
-    3300000: CONE_BASE
-    3300002: //RootNode
-    4300000: CYLINDER_TOP
-    4300002: CONE_BASE
+    100000: Cube
+    100002: Cube_002
+    100004: //RootNode
+    100006: rightLEg
+    400000: Cube
+    400002: Cube_002
+    400004: //RootNode
+    400006: rightLEg
+    2300000: Cube
+    2300002: Cube_002
+    2300004: rightLEg
+    3300000: Cube
+    3300002: Cube_002
+    3300004: rightLEg
+    4300000: rightLEg
+    4300002: Cube
+    4300004: Cube_002
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -31,13 +38,13 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 3
+    meshCompression: 0
     addColliders: 0
-    importBlendShapes: 0
+    importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -50,8 +57,8 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
-    normalImportMode: 2
-    tangentImportMode: 2
+    normalImportMode: 0
+    tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
