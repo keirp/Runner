@@ -44,11 +44,11 @@ public class CharacterScript : MonoBehaviour {
 		//Debug.Log(coefficient);
 		#if UNITY_EDITOR
 		isAccelJump = false;
-		coefficient = .5f;
+		coefficient = 0f;
 		#endif
 		float xvel = 0;
 		Vector3 tempVel = rigidbody.velocity;
-		tempVel.x = -10.0f * coefficient;
+		tempVel.x = -20.0f * coefficient;
 		if (!isJump && (Input.GetKey("space") || isAccelJump)) {
 			tempVel.y = jumpHeight;
 			isJump = true;

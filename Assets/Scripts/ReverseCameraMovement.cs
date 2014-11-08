@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ReverseCameraMovement : MonoBehaviour {
 
-	private float speed = 5f;
+	private float speed = 7f;
 
 	// Use this for initialization
 	void Start () {

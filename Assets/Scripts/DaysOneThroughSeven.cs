@@ -19,7 +19,7 @@ public class DaysOneThroughSeven : MonoBehaviour {
 	void Update () {
 		if (Time.time - lastObst > obstSpawnInt) {
 			lastObst = Time.time;
-			Instantiate(hurdle, transform.position, Quaternion.identity);
+			Instantiate(hurdle, new Vector3(.52f, 1.21f, transform.position.z), Quaternion.identity);
 		}
 		if (Time.time - lastMarker > markerSpawnInt) {
 			lastMarker = Time.time;
