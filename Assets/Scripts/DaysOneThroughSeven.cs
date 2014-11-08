@@ -6,7 +6,7 @@ public class DaysOneThroughSeven : MonoBehaviour {
 	public Transform hurdle;
 	public Transform marker;
 	private float lastObst = 0.0f;
-	private float obstSpawnInt = 1.0f;
+	private float obstSpawnInt = 2.0f;
 	private float lastMarker = 0.0f;
 	private float markerSpawnInt = 5.0f;
 
