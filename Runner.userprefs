@@ -1,13 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DaysOneThroughSeven.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CharacterScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\ReverseCameraMovement.cs" Line="13" Column="93" />
-      <File FileName="Assets\Scripts\DaysOneThroughSeven.cs" Line="60" Column="17" />
-      <File FileName="Assets\Scripts\gnashers.cs" Line="28" Column="4" />
+      <File FileName="Assets\Scripts\CharacterScript.cs" Line="115" Column="4" />
+      <File FileName="Assets\Scripts\ReverseCameraMovement.cs" Line="8" Column="26" />
+      <File FileName="Assets\Scripts\DaysOneThroughSeven.cs" Line="74" Column="15" />
+      <File FileName="Assets\Scripts\gnashers.cs" Line="3" Column="14" />
       <File FileName="Assets\Scripts\ShiftingWall.cs" Line="20" Column="3" />
       <File FileName="Assets\Scripts\Popper.cs" Line="17" Column="14" />
-      <File FileName="Assets\Scripts\CharacterScript.cs" Line="76" Column="20" />
+      <File FileName="Assets\Dive\OpenDiveSensor.cs" Line="23" Column="16" />
+      <File FileName="Assets\Scripts\VariableAbyss.cs" Line="17" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

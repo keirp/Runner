@@ -20,6 +20,7 @@ public class CharacterScript : MonoBehaviour {
 	double lastClickTime = 0;
 	float prevMagnitude = 0;
 	double time = 0;
+	int screenshotNum = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -51,6 +52,9 @@ public class CharacterScript : MonoBehaviour {
 					lastHeadbutt = Time.time;
 					Destroy(g);
 				}
+			}
+			if(isSplash){
+				lastHeadbutt = Time.time;
 			}
 		}
 
@@ -106,6 +110,8 @@ public class CharacterScript : MonoBehaviour {
 		Vector3 magnetometer = Input.compass.rawVector;
 		if (isSplash && (Input.GetKey(KeyCode.W) || (frameNum > 1 && Math.Abs (magnetometer.magnitude - prevMagnitude) > 100 && Time.time - lastClickTime > 1))) {
 			lastClickTime = Time.time;
+			screenshotNum++;
+			//Application.CaptureScreenshot("storage/emulated/0/Hackathon/Screenshot" + screenshotNum + ".png");
 		}
 		prevMagnitude = magnetometer.magnitude;
 	}
@@ -139,8 +145,15 @@ public class CharacterScript : MonoBehaviour {
 			string message;
 			if(lastClickTime == 0){
 				message = "Please click magnet to begin";
+				#if UNITY_EDITOR
+				isSplash = false;
+				hasLost = false;
+				return;
+				#endif
+				lastJump = 0;
 			} else if (lastJump == 0){
 				message = "Good job clicking! Now jump.";
+				lastHeadbutt = 0;
 			} else if (lastHeadbutt == 0){
 				message = "Good! Now break a piece of wood with your head.";
 			} else {
@@ -153,6 +166,7 @@ public class CharacterScript : MonoBehaviour {
 		} else if (hasLost) {
 			GUIStyle style = new GUIStyle();
 			style.fontSize = 30;
+			style.normal.textColor = Color.white;
 			GUI.Label (new Rect (Screen.width * 0.25f-50, Screen.height/2, 200, 50), "You Died", style);
 			GUI.Label (new Rect (Screen.width * 0.75f-50, Screen.height/2, 200, 50), "You Died", style);
 		}
