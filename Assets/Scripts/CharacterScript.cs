@@ -11,10 +11,13 @@ public class CharacterScript : MonoBehaviour {
 	double lastNegativeTime = -100;
 	double lastAcceleration = 0;
 	double lastJump = 0;
+	double prevMagnitude = 0;
+	double lastClickTime = 0;
 
 	// Use this for initialization
 	void Start () {
-	
+		Input.gyro.enabled = true;
+		Input.compass.enabled = true;
 	}
 	
 	// Update is called once per frame
@@ -63,17 +66,24 @@ public class CharacterScript : MonoBehaviour {
 					Debug.Log("hihi");
 					float dist = g.transform.position.z - transform.position.z;
 					Debug.Log(dist);
-					if (dist < 1f) {
+					if (dist < 7f) {
 						Debug.Log(dist);
 						Destroy(g);
 					}
 				}
 			}
 		}
+
+		Vector3 magnetometer = Input.compass.rawVector;
+		if (Math.Abs (magnetometer.magnitude - prevMagnitude) > 100 && time - lastClickTime > 1) {
+			Application.LoadLevel(0);
+			lastClickTime = time;
+		}
+		prevMagnitude = magnetometer.magnitude; // make global double prevMagnitude
 	}
 
 	void OnTriggerEnter (Collider other) {
-		if (other.tag == "obst") {
+		if (other.tag == "obst" || other.tag == "smashable") {
 			Debug.Log("You lose");
 			RenderSettings.ambientLight = Color.red;
 		} else if (other.tag == "ground") {
