@@ -12,7 +12,7 @@ public class DaysOneThroughSeven : MonoBehaviour {
 	public Transform slidingWall;
 	public Transform smashingWall;
 	private float lastObst = 0.0f;
-	private float obstSpawnInt = 3.0f;
+	private float obstSpawnInt = 0.0f;
 	private float lastMarker = 0.0f;
 	private float markerSpawnInt = 5.0f;
 	public int Q = 0;
@@ -26,8 +26,9 @@ public class DaysOneThroughSeven : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Time.time - lastObst > obstSpawnInt && !charScript.isLost ()) {
+			obstSpawnInt = 2f + BinomialRandom(0.5f, 6);
 			lastObst = Time.time;
-			int obst = BinomialRandom((float)(1f-1f/Math.Pow(Q, 0.3)),5.0f);
+			int obst = BinomialRandom((float)(1f-1f/Math.Pow(Q, 0.3)),5);
 			switch (obst) {
 				case 0:
 					Instantiate(abyss, new Vector3(-7.643703f, 1.229f, transform.position.z), Quaternion.identity);
@@ -42,12 +43,12 @@ public class DaysOneThroughSeven : MonoBehaviour {
 					Instantiate(popper, new Vector3(0f, 0.57f, transform.position.z), Quaternion.identity);
 					break;
 				case 4:
-					Instantiate(gnasher, new Vector3(-3.33f, 1.7f, transform.position.z), Quaternion.identity);
-					Instantiate(gnasher, new Vector3(0f, 1.7f, transform.position.z), Quaternion.identity);
-					Instantiate(gnasher, new Vector3(3.33f, 1.7f, transform.position.z), Quaternion.identity);
+					Instantiate(slidingWall, new Vector3(0f, 6f, transform.position.z), Quaternion.identity);
 					break;
 				case 5:
-					Instantiate(slidingWall, new Vector3(0f, 6f, transform.position.z), Quaternion.identity);
+					Instantiate(gnasher, new Vector3(-3.33f, 1f, transform.position.z), Quaternion.identity);
+					Instantiate(gnasher, new Vector3(0f, 1f, transform.position.z), Quaternion.identity);
+					Instantiate(gnasher, new Vector3(3.33f, 1f, transform.position.z), Quaternion.identity);
 					break;
 			}
 
@@ -58,7 +59,7 @@ public class DaysOneThroughSeven : MonoBehaviour {
 		}
 	}
 
-	int BinomialRandom(float prob, float max){
+	int BinomialRandom(float prob, int max){
 		int sum = 0;
 		for (int i=0; i< max; i++) {
 			sum += (UnityEngine.Random.Range(0,100)/100f) < prob ? 1 : 0;
@@ -71,8 +72,8 @@ public class DaysOneThroughSeven : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		GUI.Label (new Rect (Screen.width*0.25f-40, Screen.height*0.7f, 100, 20), "Your score is " + Q);
-		GUI.Label (new Rect (Screen.width*0.75f-40, Screen.height*0.7f, 100, 20), "Your score is " + Q);
+		GUI.Label (new Rect (Screen.width*0.25f-40, Screen.height*0.6f, 100, 20), "Your score is " + Q);
+		GUI.Label (new Rect (Screen.width*0.75f-40, Screen.height*0.6f, 100, 20), "Your score is " + Q);
 	}
 
 	void PreventApocalypse() {

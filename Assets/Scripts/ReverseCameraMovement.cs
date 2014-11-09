@@ -5,7 +5,7 @@ public class ReverseCameraMovement : MonoBehaviour {
 	DaysOneThroughSeven godScript;
 	CharacterScript charScript;
 	public int pointValue = 1;
-	private float speed = 7f;
+	private float speed = 10f;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +16,7 @@ public class ReverseCameraMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Translate(Vector3.forward * Time.deltaTime * -speed * (charScript.isLost() ? 0 : 1), Space.World);
-		if (transform.position.z < -5) {
+		if (transform.position.z < -50) {
 			Destroy(gameObject);
 		}
 	}
