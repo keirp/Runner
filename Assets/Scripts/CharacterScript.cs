@@ -22,6 +22,7 @@ public class CharacterScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Input.compass.enabled = true;
+		Input.gyro.enabled = true;
 	}
 	
 	// Update is called once per frame
@@ -85,7 +86,7 @@ public class CharacterScript : MonoBehaviour {
 		}
 
 		Vector3 magnetometer = Input.compass.rawVector;
-		if (Input.GetKey(KeyCode.Y) || (frameNum > 1 && Math.Abs (magnetometer.magnitude - prevMagnitude) > 100 && Time.time - lastClickTime > 1)) {
+		if (isSplash && (Input.GetKey(KeyCode.Y) || (frameNum > 1 && Math.Abs (magnetometer.magnitude - prevMagnitude) > 100 && Time.time - lastClickTime > 1))) {
 			isSplash = false;
 			hasLost = false;
 			lastClickTime = Time.time;
@@ -94,7 +95,7 @@ public class CharacterScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		if (other.tag == "obst" || other.tag == "smashable") {
+		if (!hasLost && (other.tag == "obst" || other.tag == "smashable")) {
 			Debug.Log("You lose");
 			RenderSettings.ambientLight = Color.red;
 			hasLost = true;
@@ -117,8 +118,8 @@ public class CharacterScript : MonoBehaviour {
 			GUIStyle style = new GUIStyle();
 			style.fontSize = 15;
 			style.normal.textColor = Color.white;
-			GUI.Label (new Rect (Screen.width * 0.25f-100, Screen.height/2, 400, 50), "Tap magnet to begin " + Input.compass.rawVector.ToString(), style);
-			GUI.Label (new Rect (Screen.width * 0.75f-100, Screen.height/2, 400, 50), "Tap magnet to begin " + Input.compass.rawVector.ToString(), style);
+			GUI.Label (new Rect (Screen.width * 0.25f-100, Screen.height/2, 400, 50), "Tap magnet to begin ", style);
+			GUI.Label (new Rect (Screen.width * 0.75f-100, Screen.height/2, 400, 50), "Tap magnet to begin ", style);
 		} else if (hasLost) {
 			GUIStyle style = new GUIStyle();
 			style.fontSize = 30;

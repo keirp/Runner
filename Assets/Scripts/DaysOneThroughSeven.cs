@@ -10,6 +10,7 @@ public class DaysOneThroughSeven : MonoBehaviour {
 	public Transform gnasher;
 	public Transform popper;
 	public Transform slidingWall;
+	public Transform smashingWall;
 	private float lastObst = 0.0f;
 	private float obstSpawnInt = 3.0f;
 	private float lastMarker = 0.0f;
@@ -35,14 +36,17 @@ public class DaysOneThroughSeven : MonoBehaviour {
 					Instantiate(hurdle, new Vector3(.52f, 1.21f, transform.position.z), Quaternion.identity);
 					break;
 				case 2:
-					Instantiate(popper, new Vector3(0f, 0f, transform.position.z), Quaternion.identity);
+					Instantiate(smashingWall, new Vector3(0.0f, 2.89f, transform.position.z), Quaternion.identity);
 					break;
 				case 3:
+					Instantiate(popper, new Vector3(0f, 0.57f, transform.position.z), Quaternion.identity);
+					break;
+				case 4:
 					Instantiate(gnasher, new Vector3(-3.33f, 1.7f, transform.position.z), Quaternion.identity);
 					Instantiate(gnasher, new Vector3(0f, 1.7f, transform.position.z), Quaternion.identity);
 					Instantiate(gnasher, new Vector3(3.33f, 1.7f, transform.position.z), Quaternion.identity);
 					break;
-				case 4:
+				case 5:
 					Instantiate(slidingWall, new Vector3(0f, 6f, transform.position.z), Quaternion.identity);
 					break;
 			}
