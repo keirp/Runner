@@ -18,6 +18,7 @@ public class CharacterScript : MonoBehaviour {
 	float lostTime;
 	double lastClickTime = 0;
 	float prevMagnitude = 0;
+	double time = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +29,10 @@ public class CharacterScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		frameNum++;
+		if (!hasLost && !isSplash && !isJump) {
+			time += Time.deltaTime;
+			transform.position += new Vector3 (0, (float)Math.Sin (time * 10) * 0.03f, 0);
+		}
 		double x = Input.acceleration.x;
 		double y = Input.acceleration.y;
 		double z = Input.acceleration.z;
@@ -66,14 +71,13 @@ public class CharacterScript : MonoBehaviour {
 			object[] obj = GameObject.FindSceneObjectsOfType(typeof (GameObject));
 			foreach (object o in obj) {
 				GameObject g = (GameObject) o;
-				if (g.tag == "smashable") {
+				float dist = g.transform.position.z - transform.position.z;
+				if (dist < 5f && g.tag == "smashable") {
 					Destroy(g);
 				}
 			}
 		}
-
-		Debug.Log (Time.time - lostTime);
-
+	
 		if (!isSplash && hasLost && Time.time - lostTime > 3) {
 			Application.LoadLevel(0);
 		}
@@ -124,7 +128,7 @@ public class CharacterScript : MonoBehaviour {
 			GUIStyle style = new GUIStyle();
 			style.fontSize = 30;
 			GUI.Label (new Rect (Screen.width * 0.25f-50, Screen.height/2, 200, 50), "You Died", style);
-			GUI.Label (new Rect (Screen.width * 0.75f-50, Screen.height/2, 200, 50), "You Died", style);
+			GUI.Label (new Rect (Screen.width * 0.75f-53, Screen.height/2, 200, 50), "You Died", style);
 		}
 	}
 

@@ -18,7 +18,10 @@ public class ReverseCameraMovement : MonoBehaviour {
 		transform.Translate(Vector3.forward * Time.deltaTime * -speed * (charScript.isLost() ? 0 : 1), Space.World);
 		if (transform.position.z < -5) {
 			Destroy(gameObject);
-			godScript.incrementQ(pointValue);
 		}
+	}
+
+	void OnDestroy() {
+		godScript.incrementQ(pointValue);
 	}
 }
