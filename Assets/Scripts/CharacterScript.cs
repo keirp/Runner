@@ -13,15 +13,20 @@ public class CharacterScript : MonoBehaviour {
 	double lastJump = 0;
 	double prevMagnitude = 0;
 	double lastClickTime = 0;
+	bool isDead = false;
 
 	// Use this for initialization
 	void Start () {
 		Input.gyro.enabled = true;
 		Input.compass.enabled = true;
+		isDead = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (isDead) {
+			Input.compass.enabled = true;
+		}
 		frameNum++;
 		time += Time.deltaTime;
 		double x = Input.acceleration.x;
@@ -75,22 +80,29 @@ public class CharacterScript : MonoBehaviour {
 		}
 
 		Vector3 magnetometer = Input.compass.rawVector;
-		if (Math.Abs (magnetometer.magnitude - prevMagnitude) > 100 && time - lastClickTime > 1) {
+		if (time - lastClickTime > 1 && Math.Abs (magnetometer.magnitude - prevMagnitude) > 100) {
 			Application.LoadLevel(0);
 			lastClickTime = time;
 		}
 		prevMagnitude = magnetometer.magnitude; // make global double prevMagnitude
+
+		if(transform.localPosition.y < -50){
+			Application.LoadLevel(0);
+		}
 	}
 
 	void OnTriggerEnter (Collider other) {
 		if (other.tag == "obst" || other.tag == "smashable") {
 			Debug.Log("You lose");
+			isDead = true;
 			RenderSettings.ambientLight = Color.red;
+			Application.LoadLevel(0);
 		} else if (other.tag == "ground") {
 			Debug.Log("you are touching the ground");
 			isJump = false;
 			RenderSettings.ambientLight = Color.gray;
 		} else if (other.tag == "abyss") {
+			isDead = true;
 			gameObject.layer = 8;
 		}
 	}

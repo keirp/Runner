@@ -14,6 +14,7 @@ public class ReverseCameraMovement : MonoBehaviour {
 	void Update () {
 		transform.Translate(Vector3.forward * Time.deltaTime * -speed, Space.World);
 		if (transform.position.z < -5) {
+			GameObject.FindGameObjectWithTag("god").SendMessage("incrementQ", 1);
 			Destroy(gameObject);
 		}
 	}
