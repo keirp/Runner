@@ -54,6 +54,16 @@ public class CharacterScript : MonoBehaviour {
 			isJump = true;
 		}
 		rigidbody.velocity = tempVel;
+
+		if (Math.Abs(Input.gyro.rotationRateUnbiased.x) > 3) {
+			object[] obj = GameObject.FindSceneObjectsOfType(typeof (GameObject));
+			foreach (object o in obj) {
+				GameObject g = (GameObject) o;
+				if (g.tag == "smashable") {
+					
+				}
+			}
+		}
 	}
 
 	void OnTriggerEnter (Collider other) {
