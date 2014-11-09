@@ -55,12 +55,18 @@ public class CharacterScript : MonoBehaviour {
 		}
 		rigidbody.velocity = tempVel;
 
-		if (Math.Abs(Input.gyro.rotationRateUnbiased.x) > 3) {
+		if (Math.Abs(Input.gyro.rotationRateUnbiased.x) > 3 || Input.GetKey(KeyCode.A)) {
 			object[] obj = GameObject.FindSceneObjectsOfType(typeof (GameObject));
 			foreach (object o in obj) {
 				GameObject g = (GameObject) o;
 				if (g.tag == "smashable") {
-					
+					Debug.Log("hihi");
+					float dist = g.transform.position.z - transform.position.z;
+					Debug.Log(dist);
+					if (dist < 1f) {
+						Debug.Log(dist);
+						Destroy(g);
+					}
 				}
 			}
 		}
